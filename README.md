@@ -35,6 +35,7 @@ npm run build
 ## 发布
 
 ```bash
+npm run build
 npx --yes wrangler@4.128.0 deploy --dry-run --config wrangler.jsonc
 npx --yes wrangler@4.128.0 deploy --config wrangler.jsonc
 ```
