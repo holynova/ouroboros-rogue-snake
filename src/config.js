@@ -13,7 +13,7 @@ export const T_STAIR = 7;
 
 /** Project links surfaced in the UI. */
 export const REPO_URL = 'https://github.com/holynova/ouroboros-rogue-snake';
-export const PAGES_URL = 'https://holynova.github.io/ouroboros-rogue-snake/';
+export const PAGES_URL = 'https://ouroboros-rogue-snake.xiaosang.cc/';
 
 export const VIEW_W = 1280;
 export const VIEW_H = 720;
