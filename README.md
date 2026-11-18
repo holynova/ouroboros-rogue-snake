@@ -1,25 +1,25 @@
+<p align="right"><a href="README.en.md">English</a></p>
+
 <p align="center">
   <img src="./assets/readme/hero.svg" width="100%" alt="衔尾者 OUROBOROS — 翠绿蛇身盘成圆环咬住自己的尾巴，中央是金色传送门，12 层直达深渊">
 </p>
 
 <p align="center">
-  <a href="https://holynova.github.io/ouroboros-rogue-snake/">▶ 在线玩 Play Online</a>
+  <a href="https://holynova.github.io/ouroboros-rogue-snake/">▶ 在线玩</a>
   ·
   <a href="https://github.com/holynova/ouroboros-rogue-snake">GitHub 仓库</a>
 </p>
 
 衔尾者是贪食蛇与地牢肉鸽的结合：你在 12 层程序化地牢里操控一条蛇，吃掉敌人、拾取精华、三选一升级、构筑遗物，一路打到深渊。核心规则被反了过来——身体不是枷锁而是资源：压到自己只掉 1 血并消化 20% 长度，长度能换伤害、进分数、溢出成精华。美术与音乐没有任何素材文件，全部在运行时程序化生成。
 
-OUROBOROS is a snake × roguelike dungeon crawler: pilot a snake through 12 procedurally generated dungeon depths, eat enemies, gather essence, pick 1-of-3 upgrades, and build a relic loadout down to the abyss. The core rule is flipped — your body is a resource, not a trap: running over yourself costs 1 HP and digests 20% of your length, and length converts into damage, score, and overflow essence. Zero asset files: all art and music are generated at runtime.
-
-## 截图 / Screenshots
+## 截图
 
 <p align="center">
   <img src="./assets/readme/screenshot-title.png" width="800" alt="标题屏：OUROBOROS 绿字标题，开始新的轮回、圣所、图鉴三个选项，底部按键说明">
   <img src="./assets/readme/screenshot-gameplay.png" width="800" alt="第 1 层实战：绿蛇在 2 格宽走廊里，周围有敌人与拾取物，顶部 HUD 显示 14/14 血、精华 46、等级 4、分数 518">
 </p>
 
-## 玩法 / How to Play
+## 玩法
 
 - **转向**：WASD / 方向键；输入带缓冲，最新意图永远胜出，撞墙只丢会重新撞墙的那一格。
 - **突进**：Space（无敌帧，可碾碎敌人）；**冲击波**：Q（消耗 25 精华）。
@@ -27,7 +27,7 @@ OUROBOROS is a snake × roguelike dungeon crawler: pilot a snake through 12 proc
 - **身体是资源**：压到自己掉 1 血、消化 20% 长度但继续前进；撞墙停在原地等转向；1.1 秒完全不动触发强行转身，永不卡死。
 - **成长**：升级三选一；长度进分数，超过软上限溢出成精华；「消化」类升级把长度直接换算成伤害。
 
-## 内容 / Content
+## 内容
 
 - **12 层地牢**：房间 + 2 格宽走廊，含循环边、碎石、深坑；同一种子必然生成同一张地图。
 - **7 种敌人**：各有射程弹幕、召唤、穿墙、死亡自爆等行为；敌人 AI 每 0.4 秒从玩家位置重算 BFS 距离场。
@@ -37,7 +37,7 @@ OUROBOROS is a snake × roguelike dungeon crawler: pilot a snake through 12 proc
 - **音乐**：纯 Web Audio 生成式配乐，16 分音符调度器，四层（贝斯 / 琶音 / 铺底 / 鼓组），随层数切换调式并提速；20 种音效全为合成振荡器 + 包络 + 噪声。
 - **无中途存档**：一局要么打完要么结束（Roguelike 本意）；进度保存在本机浏览器，清理站点数据会移除存档。
 
-## 本地运行 / Run Locally
+## 本地运行
 
 ```bash
 npm ci
@@ -46,7 +46,7 @@ npm run build    # 生产产物输出到 docs/
 npm test         # acceptance 20 项 + steering 10 项
 ```
 
-## 技术 / Tech
+## 技术
 
 - Phaser 3.90 + Vite；Canvas 只画游戏世界（Phaser + WebGL），所有文字界面走 DOM。
 - 固定步长确定性模拟：逻辑一律以 1/60 秒定长步进，掉帧只让画面变卡、不改变游戏速度。
@@ -67,17 +67,6 @@ src/scenes/         GameScene（主玩法）、MenuScene（标题动态背景）
 
 设计细节见 `DEVELOPMENT.md`。
 
-## English
-
-**OUROBOROS** is a browser snake roguelike: 12 procedurally generated dungeon depths, 1-of-3 upgrades, relic builds, and a snake whose body is a resource — not a trap.
-
-- **Controls**: WASD/arrows to steer (buffered input, latest intent wins), Space to dash (i-frames, crushes enemies), Q for a shockwave (25 essence), E to interact, Tab for the codex, Esc to pause, M to mute.
-- **Body as resource**: crossing yourself costs 1 HP and digests 20% of your length; walls stop you instead of killing you; a forced turn after 1.1 s of no movement means you can never get stuck.
-- **Content**: 12 depths (same seed → same map), 7 enemy types with distinct behaviors, 24 upgrades, 23 relics in 3 rarity tiers, a Sanctum with 6 permanent upgrades + 5 starting relics (localStorage), and a codex that hides unencountered entries as `???`.
-- **Presentation**: zero asset files — all visuals are drawn at runtime with Canvas2D (`src/art.js`), all music and 20 sound effects are synthesized with Web Audio (`src/audio.js`); the generative soundtrack shifts mode and tempo as you descend.
-- **Tech**: Phaser 3.90 + Vite, fixed 1/60 s timestep deterministic simulation, 480-ray real-time FOV. Run it: `npm ci && npm run dev`; build: `npm run build` (output: `docs/`); tests: `npm test` (20 acceptance + 10 steering).
-- **Limits**: no mid-run saves (roguelike by design); mobile is playable but has no virtual joystick.
-
-## 许可 / License
+## 许可
 
 MIT，见 `LICENSE`。
